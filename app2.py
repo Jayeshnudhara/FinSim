@@ -5,6 +5,8 @@ import plotly.express as px
 from sample_data import get_sample_data
 from modules.anomaly_detector import detect_anomalies
 from modules.anomaly_detector import explain_anomalies
+from modules.forecasting import forecast_finances
+from modules.financial_simulator import simulate_scenario
 
 # ==========================================
 # PAGE CONFIGURATION
@@ -192,29 +194,17 @@ def home_page():
         if st.button("Login"):
             st.session_state.page = "login"
             st.rerun()
-
     st.markdown("""
-    <div class="hero">
-
-        <div class="badge">
-            ✦ SMART FINANCIAL SIMULATION PLATFORM
+        <div class="hero">
+            <h1>Understand your money.<br>Make smarter decisions.</h1>
+            <p>
+                Your personal financial intelligence centre.
+                Explore spending patterns, detect unusual
+                transactions and simulate financial decisions.
+            </p>
         </div>
-
-        <h1>
-            Understand Your Past.<br>
-            <span class="gradient-text">
-                Predict Your Financial Future.
-            </span>
-        </h1>
-
-        <p>
-            Your money. Your decisions. Your future.<br>
-            Analyse spending, discover insights and simulate
-            smarter financial possibilities.
-        </p>
-
-    </div>
     """, unsafe_allow_html=True)
+
 
     a, b, c = st.columns([2, 1, 2])
 
@@ -669,14 +659,22 @@ def dashboard_page():
                 use_container_width=True,
                 hide_index=True
             )
+    
     elif selected == "Financial Forecast":
 
         st.title("Financial Forecast")
-        st.write("Explore your spending trends and estimate your future financial position.")
+        st.write(
+            "Explore historical financial performance and "
+            "predict your income, expenses and savings for "
+            "the next 30 days."
+        )
 
         df = get_sample_data()
 
-    # Prepare monthly financial data
+        # --------------------------------
+        # 1. Historical Financial Performance
+        # --------------------------------
+
         monthly_data = (
             df.assign(month=df["date"].dt.to_period("M").astype(str))
             .groupby(["month", "type"])["amount"]
@@ -685,7 +683,6 @@ def dashboard_page():
             .reset_index()
         )
 
-    # Make sure both columns exist
         if "Income" not in monthly_data.columns:
             monthly_data["Income"] = 0
 
@@ -704,56 +701,66 @@ def dashboard_page():
             hide_index=True
         )
 
-    # Calculate average daily spending
-        expenses = df[df["type"] == "Expense"]
+        # --------------------------------
+        # 2. Generate 30-Day Forecast
+        # --------------------------------
 
-        daily_spending = (
-            expenses.groupby(expenses["date"].dt.date)["amount"]
-            .sum()
+        forecast_df = forecast_finances(
+            df,
+            forecast_days=30
         )
 
-        average_daily_spending = daily_spending.mean()
+        st.subheader("30-Day Financial Forecast")
 
-    # Simple 30-day spending estimate
-        estimated_monthly_spending = average_daily_spending * 30
+        total_income = forecast_df["predicted_income"].sum()
+        total_expenses = forecast_df["predicted_expenses"].sum()
+        total_savings = forecast_df["predicted_savings"].sum()
 
-        st.subheader("30-Day Spending Estimate")
-
-        col1, col2 = st.columns(2)
+        col1, col2, col3 = st.columns(3)
 
         col1.metric(
-            "Average Daily Spending",
-            f"₹{average_daily_spending:,.0f}"
+            "Predicted Income",
+            f"₹{total_income:,.0f}"
         )
 
         col2.metric(
-            "Estimated 30-Day Spending",
-            f"₹{estimated_monthly_spending:,.0f}"
+            "Predicted Expenses",
+            f"₹{total_expenses:,.0f}"
         )
 
-    # Daily spending chart
-        st.subheader("Daily Spending Trend")
-
-        daily_data = (
-            expenses.groupby(expenses["date"].dt.date)["amount"]
-            .sum()
-            .reset_index()
+        col3.metric(
+            "Predicted Savings",
+            f"₹{total_savings:,.0f}"
         )
 
-        daily_data.columns = ["Date", "Spending"]
+        # --------------------------------
+        # 3. Forecast Chart
+        # --------------------------------
+
+        st.subheader("Predicted Financial Trends")
 
         forecast_chart = px.line(
-            daily_data,
-            x="Date",
-            y="Spending",
+            forecast_df,
+            x="date",
+            y=[
+                "predicted_income",
+                "predicted_expenses",
+                "predicted_savings"
+            ],
             markers=True,
-            title="Daily Expense Trend"
+            title="30-Day Income, Expense and Savings Forecast",
+            labels={
+                "date": "Date",
+                "value": "Amount (₹)",
+                "variable": "Financial Metric"
+            }
         )
 
         forecast_chart.update_layout(
             plot_bgcolor="white",
             paper_bgcolor="white",
-            font_color="#17243A"
+            font_color="#17243A",
+            legend_title_text="Financial Metric"
         )
 
         st.plotly_chart(
@@ -761,137 +768,124 @@ def dashboard_page():
             use_container_width=True
         )
 
-        st.caption(
-            "Note: This is a basic estimate using historical daily averages, "
-            "not the final machine-learning forecast."
+        # --------------------------------
+        # 4. Forecast Table
+        # --------------------------------
+
+        st.subheader("Daily Forecast Details")
+
+        st.dataframe(
+            forecast_df.round(2),
+            use_container_width=True,
+            hide_index=True
         )
+
+        st.caption(
+            "Forecasts are generated using Linear Regression "
+            "on historical daily transaction totals. They are "
+            "estimates, not guaranteed financial outcomes."
+        )
+
+        st.info(
+            "The forecast is based on the historical data "
+            "available in the uploaded dataset."
+        )
+
 
     elif selected == "What-If Simulator":
 
         st.title("What-If Financial Simulator")
+
         st.write(
-            "Experiment with financial decisions and see how they affect your savings."
+            "Explore how changes in your income and expenses "
+            "could affect your monthly savings."
         )
 
         df = get_sample_data()
 
-    # Calculate current monthly baseline
-        monthly_income = (
-            df[df["type"] == "Income"]["amount"].sum()
-        )
+        st.subheader("Adjust Your Financial Scenario")
 
-        monthly_expenses = (
-            df[df["type"] == "Expense"]["amount"].sum()
-        )
+        col1, col2 = st.columns(2)
 
-        current_savings = monthly_income - monthly_expenses
+        with col1:
+            income_change = st.slider(
+                "Change in Income (%)",
+                min_value=-50,
+                max_value=100,
+                value=0,
+                step=5
+            )
 
-        st.subheader("Your Current Financial Position")
+        with col2:
+            expense_change = st.slider(
+                "Change in Expenses (%)",
+                min_value=-50,
+                max_value=100,
+                value=0,
+                step=5
+            )
 
-        col1, col2, col3 = st.columns(3)
-
-        col1.metric("Income", f"₹{monthly_income:,.0f}")
-        col2.metric("Expenses", f"₹{monthly_expenses:,.0f}")
-        col3.metric("Net Balance", f"₹{current_savings:,.0f}")
-
-        st.divider()
-
-        st.subheader("Adjust Your Financial Decisions")
-
-    # User-controlled simulation inputs
-        income_change = st.slider(
-            "Change in monthly income (%)",
-            min_value=-50,
-            max_value=100,
-            value=0,
-            step=5
-        )
-
-        expense_change = st.slider(
-            "Change in monthly expenses (%)",
-            min_value=-50,
-            max_value=100,
-            value=0,
-            step=5
-        )
-
-        additional_expense = st.number_input(
-            "Additional monthly expense (₹)",
+        additional_expense = st.slider(
+            "Additional Monthly Expense (₹)",
             min_value=0,
-            max_value=100000,
+            max_value=50000,
             value=0,
             step=500
         )
 
-    # Calculate simulated financial position
-        simulated_income = monthly_income * (1 + income_change / 100)
-
-        simulated_expenses = (
-            monthly_expenses * (1 + expense_change / 100)
-            + additional_expense
+        results = simulate_scenario(
+            df,
+            income_change_pct=income_change,
+            expense_change_pct=expense_change,
+            additional_expense=additional_expense
         )
 
-        simulated_savings = simulated_income - simulated_expenses
-
-        savings_rate = (
-            simulated_savings / simulated_income * 100
-            if simulated_income > 0 else 0
-        )
-
-        st.divider()
-
-        st.subheader("Simulation Results")
+        st.subheader("Your Financial Comparison")
 
         col1, col2, col3 = st.columns(3)
 
         col1.metric(
-            "Projected Income",
-            f"₹{simulated_income:,.0f}",
+            "Monthly Income",
+            f"₹{results['simulated_income']:,.0f}",
             f"{income_change:+}%"
         )
 
         col2.metric(
-            "Projected Expenses",
-            f"₹{simulated_expenses:,.0f}",
-            f"{expense_change:+}%"
+            "Monthly Expenses",
+            f"₹{results['simulated_expenses']:,.0f}"
         )
 
         col3.metric(
-            "Projected Savings",
-            f"₹{simulated_savings:,.0f}",
-            f"₹{simulated_savings - current_savings:,.0f}"
+            "Monthly Savings",
+            f"₹{results['simulated_savings']:,.0f}"
         )
 
-        st.metric(
-            "Projected Savings Rate",
-            f"{savings_rate:.1f}%"
-        )
-
-    # Compare current and simulated position
-        comparison = pd.DataFrame({
+        comparison_data = pd.DataFrame({
             "Scenario": ["Current", "Simulated"],
-            "Income": [monthly_income, simulated_income],
-            "Expenses": [monthly_expenses, simulated_expenses],
-            "Savings": [current_savings, simulated_savings]
+            "Income": [
+                results["current_income"],
+                results["simulated_income"]
+            ],
+            "Expenses": [
+                results["current_expenses"],
+                results["simulated_expenses"]
+            ],
+            "Savings": [
+                results["current_savings"],
+                results["simulated_savings"]
+            ]
         })
 
         comparison_chart = px.bar(
-            comparison,
+            comparison_data,
             x="Scenario",
             y=["Income", "Expenses", "Savings"],
             barmode="group",
             title="Current vs Simulated Financial Position",
-            color_discrete_map={
-                "Income": "#B99A60",
-                "Expenses": "#263B58",
-                "Savings": "#788397"
+            labels={
+                "value": "Amount (₹)",
+                "variable": "Financial Metric"
             }
-        )
-
-        comparison_chart.update_layout(
-            plot_bgcolor="white",
-            paper_bgcolor="white",
-            font_color="#17243A"
         )
 
         st.plotly_chart(
@@ -899,25 +893,28 @@ def dashboard_page():
             use_container_width=True
         )
 
-        if simulated_savings > current_savings:
+        st.subheader("Savings Rate")
+
+        st.metric(
+            "Simulated Savings Rate",
+            f"{results['savings_rate']:.2f}%"
+        )
+
+        if results["simulated_savings"] >= 0:
             st.success(
-                "This scenario improves your financial position!"
-            )
-        elif simulated_savings < current_savings:
-            st.warning(
-                "This scenario reduces your available savings."
+                "Your simulated income covers your expenses. "
+                "You have a positive savings balance."
             )
         else:
-            st.info(
-                "Your financial position remains unchanged."
+            st.warning(
+                "Your simulated expenses are higher than your income. "
+                "Consider adjusting your financial scenario."
             )
 
         st.caption(
-            "This is a scenario-based financial estimate using sample data, "
-            "not a prediction or financial recommendation."
+            "Simulation results are estimates based on average monthly "
+            "historical transactions. They are not guaranteed outcomes."
         )
-
-
 
 # ==========================================
 # PAGE ROUTING

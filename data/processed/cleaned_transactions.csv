@@ -1,0 +1,277 @@
+date,description,amount,type,category,merchant
+2022-03-02,Brownie,50.0,Expense,Food,Unknown
+2022-03-02,To lended people,300.0,Expense,Other,Unknown
+2022-03-01,Dinner,78.0,Expense,Food,Unknown
+2022-03-01,Metro,30.0,Expense,Transportation,Unknown
+2022-03-01,Snacks,67.0,Expense,Food,Unknown
+2022-03-01,From vicky,100.0,Income,Other,Unknown
+2022-03-01,From dad,500.0,Income,Other,Unknown
+2022-02-28,Pizza,339.15,Expense,Food,Unknown
+2022-02-28,From kumara,200.0,Income,Other,Unknown
+2022-02-27,Lunch,243.0,Expense,Food,Unknown
+2022-02-26,Unknown,25.0,Expense,Food,Unknown
+2022-02-26,From dad,1500.0,Income,Other,Unknown
+2022-02-26,To karthi,100.0,Expense,Other,Unknown
+2022-02-26,Unknown,1700.0,Expense,Social Life,Unknown
+2022-02-26,Snacks,40.0,Expense,Food,Unknown
+2022-02-26,Tea lights,84.0,Expense,Food,Unknown
+2022-02-25,Unknown,33.0,Expense,Food,Unknown
+2022-02-24,Unknown,303.0,Expense,Household,Unknown
+2022-02-24,Creamstone,289.0,Expense,Food,Unknown
+2022-02-24,Tamen,324.7,Expense,Food,Unknown
+2022-02-23,Hoodie for gobi,399.0,Expense,Apparel,Unknown
+2022-02-23,Eggs,83.0,Expense,Food,Unknown
+2022-02-23,Earphone,399.0,Expense,Apparel,Unknown
+2022-02-22,Auto to laxmi mills,120.0,Expense,Transportation,Unknown
+2022-02-21,It better be worth it,1300.0,Expense,Transportation,Unknown
+2022-02-21,Travel to koyambedu,138.0,Expense,Transportation,Unknown
+2022-02-21,Stuffs,336.0,Expense,Household,Unknown
+2022-02-21,Train cbe to chn,201.8,Expense,Transportation,Unknown
+2022-02-20,Lunch,200.0,Expense,Food,Unknown
+2022-02-19,Random stuff for drinks,111.0,Expense,Food,Unknown
+2022-02-19,Snacks,250.0,Expense,Food,Unknown
+2022-02-19,Bus ticket,1575.0,Expense,Transportation,Unknown
+2022-02-19,Took from sbi,200.0,Expense,Transportation,Unknown
+2022-02-19,Ramen with gobi,380.0,Expense,Food,Unknown
+2022-02-19,Metro,60.0,Expense,Transportation,Unknown
+2022-02-19,To auto anna,50.0,Expense,Other,Unknown
+2022-02-19,To egmore,270.0,Expense,Transportation,Unknown
+2022-02-18,Kfc dinner,348.0,Expense,Food,Unknown
+2022-02-17,Lunch,80.0,Expense,Food,Unknown
+2022-02-16,Side dishes,165.0,Expense,Food,Unknown
+2022-02-16,Kfc,475.0,Expense,Food,Unknown
+2022-02-13,Games,100.0,Expense,Social Life,Unknown
+2022-02-12,Dinner with aravind and buddies,491.0,Expense,Food,Unknown
+2022-02-12,Mirror,70.0,Expense,Household,Unknown
+2022-02-12,Lunch,80.0,Expense,Food,Unknown
+2022-02-12,From dad,10000.0,Income,Other,Unknown
+2022-02-11,Dinner with aravind,373.0,Expense,Food,Unknown
+2022-02-10,Kfc dinner,641.0,Expense,Food,Unknown
+2022-02-08,From dad,1000.0,Income,Other,Unknown
+2022-02-08,Bean bag,2099.0,Expense,Household,Unknown
+2022-02-07,Auto to Gobi's place,214.0,Expense,Transportation,Unknown
+2022-02-06,Cakepark,125.0,Expense,Food,Unknown
+2022-02-06,To kumara,150.0,Expense,Food,Unknown
+2022-02-06,To chennai,1000.0,Expense,Transportation,Unknown
+2022-02-06,Salary from dad,5000.0,Income,Other,Unknown
+2022-02-06,To gobi,1500.0,Expense,Other,Unknown
+2022-02-04,Shawarma,80.0,Expense,Food,Unknown
+2022-02-03,Good soup,50.0,Expense,Food,Unknown
+2022-02-03,To gowdham,150.0,Expense,Other,Unknown
+2022-02-02,Parotta,120.0,Expense,Food,Unknown
+2022-02-02,From dad,500.0,Income,Other,Unknown
+2022-01-31,Vnr to apk,50.0,Expense,Transportation,Unknown
+2022-01-31,To vicky,200.0,Expense,Other,Unknown
+2022-01-31,To ksr station,153.0,Expense,Transportation,Unknown
+2022-01-30,Dinner,155.0,Expense,Food,Unknown
+2022-01-30,Cycle gap,120.0,Expense,Food,Unknown
+2022-01-30,Brunch,105.0,Expense,Food,Unknown
+2022-01-29,Rapido to pg,44.0,Expense,Transportation,Unknown
+2022-01-29,Sent to barath,100.0,Expense,Other,Unknown
+2022-01-28,Banana,10.0,Expense,Food,Unknown
+2022-01-28,Lunch with company,138.0,Expense,Food,Unknown
+2022-01-27,Rapido to pg,43.0,Expense,Transportation,Unknown
+2022-01-27,To vicky,300.0,Expense,Other,Unknown
+2022-01-27,To vishnu,100.0,Expense,Other,Unknown
+2022-01-27,Zinger box meal,279.0,Expense,Food,Unknown
+2022-01-27,From vicky,300.0,Income,Other,Unknown
+2022-01-27,From dad,1500.0,Income,Other,Unknown
+2022-01-26,Snacks,115.0,Expense,Food,Unknown
+2022-01-26,Vishnu 100 gowdham 25,125.0,Income,Other,Unknown
+2022-01-26,Paani poori,25.0,Expense,Food,Unknown
+2022-01-25,Kfc date with myself,259.0,Expense,Food,Unknown
+2022-01-25,Lemon tea,18.0,Expense,Food,Unknown
+2022-01-25,Train to vnr,325.0,Expense,Transportation,Unknown
+2022-01-24,Snack,40.0,Expense,Food,Unknown
+2022-01-24,Lunch with company,133.0,Expense,Food,Unknown
+2022-01-23,Pepsi,40.0,Expense,Food,Unknown
+2022-01-23,Dinner,465.0,Expense,Food,Unknown
+2022-01-23,Sent to vicky,300.0,Expense,Food,Unknown
+2022-01-23,Lunch,302.0,Expense,Food,Unknown
+2022-01-23,From vicky,310.0,Income,Other,Unknown
+2022-01-23,Snacks with preethi and azar,176.0,Expense,Food,Unknown
+2022-01-23,Badminton,200.0,Expense,Social Life,Unknown
+2022-01-23,From dad,2000.0,Income,Other,Unknown
+2022-01-21,Lunch with company,188.0,Expense,Food,Unknown
+2022-01-21,Snacks,37.0,Expense,Food,Unknown
+2022-01-21,From vicky,200.0,Income,Other,Unknown
+2022-01-19,Lunch + chocolate for preethi,171.0,Expense,Food,Unknown
+2022-01-18,Dinner,301.15,Expense,Food,Unknown
+2022-01-18,Snack with preethi,59.0,Expense,Food,Unknown
+2022-01-18,Lunch with company,148.0,Expense,Food,Unknown
+2022-01-18,To kumara,200.0,Expense,Other,Unknown
+2022-01-18,From dad,1000.0,Income,Other,Unknown
+2022-01-17,Eve snack,100.0,Expense,Food,Unknown
+2022-01-15,Bus to Bangalore,1365.0,Expense,Transportation,Unknown
+2022-01-15,From dad,1500.0,Income,Other,Unknown
+2022-01-15,Snacks,70.0,Expense,Food,Unknown
+2022-01-14,Kumara,170.0,Income,Other,Unknown
+2022-01-14,Siva + 100 cash,70.0,Income,Other,Unknown
+2022-01-14,Gundan + prasanna,340.0,Income,Other,Unknown
+2022-01-14,Dinesh and maddy + 100 cash,240.0,Income,Other,Unknown
+2022-01-14,From gowdham,340.0,Income,Other,Unknown
+2022-01-14,Lunch pongal,1530.0,Expense,Food,Unknown
+2022-01-13,Dinner,66.0,Expense,Food,Unknown
+2022-01-13,From dad,1000.0,Income,Other,Unknown
+2022-01-13,Rapido to pg,43.0,Expense,Transportation,Unknown
+2022-01-12,Recharge by gowdham,479.0,Expense,Other,Unknown
+2022-01-12,Pizza,301.75,Expense,Food,Unknown
+2022-01-12,From kumara,200.0,Income,Other,Unknown
+2022-01-11,Lunch with not preethi,135.5,Expense,Food,Unknown
+2022-01-10,Friday snacks with preethi gang,106.0,Expense,Food,Unknown
+2022-01-08,From gowdham,260.0,Income,Other,Unknown
+2022-01-08,Lunch with gowdham,535.3,Expense,Food,Unknown
+2022-01-08,Rent,4580.0,Expense,Household,Unknown
+2022-01-07,Coffee + biscuit,15.0,Expense,Food,Unknown
+2022-01-06,From barath and shakur,440.0,Income,Other,Unknown
+2022-01-06,Ketch up,20.0,Expense,Food,Unknown
+2022-01-06,Dinner with roommate,877.81,Expense,Food,Unknown
+2022-01-06,Bingo,10.0,Expense,Food,Unknown
+2022-01-06,Rapido to pg,42.0,Expense,Transportation,Unknown
+2022-01-05,McDonald's with company,211.0,Expense,Food,Unknown
+2022-01-05,Lended money returned to vishnu,40.0,Expense,Other,Unknown
+2022-01-05,Lended money returned to kumara,30.0,Expense,Other,Unknown
+2022-01-05,Jan 2nd with shakur and barath,354.0,Expense,Food,Unknown
+2022-01-05,To gobi 1st 1/4th,500.0,Expense,Other,Unknown
+2022-01-05,To abijith and to vicky lend money returned,500.0,Expense,Other,Unknown
+2022-01-05,Refund for bus ticket,60.0,Expense,Transportation,Unknown
+2022-01-05,Lunch with company,388.0,Expense,Food,Unknown
+2022-01-04,Arrear and reval fee,1400.0,Expense,Education,Unknown
+2022-01-04,Salary,8000.0,Income,Salary,Unknown
+2022-01-04,Lunch with company,106.0,Expense,Food,Unknown
+2022-01-04,To vicky,80.0,Expense,Other,Unknown
+2022-01-04,Sent to preethi,107.0,Expense,Food,Unknown
+2022-01-03,Dairy milk,10.0,Expense,Food,Unknown
+2022-01-03,From barath,201.0,Income,Other,Unknown
+2022-01-03,From gpay,5.0,Income,Other,Unknown
+2022-01-03,From shakur,140.0,Income,Other,Unknown
+2022-01-03,Lunch unlimited nv,300.0,Expense,Food,Unknown
+2022-01-03,From abi,300.0,Income,Other,Unknown
+2022-01-02,Tablet to gowdham,8.0,Expense,Other,Unknown
+2022-01-02,Dinner with barath,200.0,Expense,Food,Unknown
+2022-01-02,Train to vnr,725.0,Expense,Transportation,Unknown
+2022-01-01,Snacks,85.0,Expense,Food,Unknown
+2022-01-01,From dad,1000.0,Income,Allowance,Unknown
+2021-12-30,To barath,20.0,Expense,Food,Unknown
+2021-12-30,Pg to office,43.0,Expense,Transportation,Unknown
+2021-12-30,From kumara,30.0,Income,Other,Unknown
+2021-12-30,Horlicks + kolakattai,25.0,Expense,Food,Unknown
+2021-12-30,Bommasandra to pg,199.0,Expense,Transportation,Unknown
+2021-12-30,From Deepak,250.0,Income,Other,Unknown
+2021-12-30,Water,20.0,Expense,Food,Unknown
+2021-12-30,From abi,20.0,Income,Other,Unknown
+2021-12-30,Rapido + toll,286.0,Expense,Transportation,Unknown
+2021-12-28,Coffee and thattai,14.0,Expense,Food,Unknown
+2021-12-27,Lunch with barath,115.0,Expense,Food,Unknown
+2021-12-27,From vicky,80.0,Income,Other,Unknown
+2021-12-27,From ganesan,40.0,Income,Other,Unknown
+2021-12-27,Coconut water with stu,50.0,Expense,Food,Unknown
+2021-12-25,Dinner with barath,504.0,Expense,Food,Unknown
+2021-12-25,Cab,306.0,Expense,Transportation,Unknown
+2021-12-25,Books,400.0,Expense,Self-development,Unknown
+2021-12-25,Corn,30.0,Expense,Food,Unknown
+2021-12-25,Water,30.0,Expense,Food,Unknown
+2021-12-25,Milk with bharath,40.0,Expense,Food,Unknown
+2021-12-24,Beer,150.0,Expense,Social Life,Unknown
+2021-12-24,Lunch with company,262.0,Expense,Food,Unknown
+2021-12-23,Lemon tea with company,15.0,Expense,Food,Unknown
+2021-12-23,Puffs and coffee,32.0,Expense,Food,Unknown
+2021-12-21,Dinner with barath,239.0,Expense,Food,Unknown
+2021-12-21,Puffs,25.0,Expense,Food,Unknown
+2021-12-21,Bun,18.0,Expense,Food,Unknown
+2021-12-20,Milk with bharath,80.0,Expense,Food,Unknown
+2021-12-20,Taxi,80.0,Expense,Transportation,Unknown
+2021-12-20,Snacks,20.0,Expense,Food,Unknown
+2021-12-20,Water,20.0,Expense,Food,Unknown
+2021-12-20,Lunch with barath,85.0,Expense,Food,Unknown
+2021-12-20,Milk with bharath,40.0,Expense,Food,Unknown
+2021-12-19,To siva,100.0,Expense,Other,Unknown
+2021-12-18,To kumara,100.0,Expense,Other,Unknown
+2021-12-18,To abijith,200.0,Expense,Other,Unknown
+2021-12-18,To rahul,113.0,Expense,Food,Unknown
+2021-12-18,From dad,1000.0,Income,Allowance,Unknown
+2021-12-18,Lended money,400.0,Income,Other,Unknown
+2021-12-18,Spiderman,363.72,Expense,Social Life,Unknown
+2021-12-18,Lunch,160.0,Expense,Food,Unknown
+2021-12-17,Milk with bharath,70.0,Expense,Food,Unknown
+2021-12-17,Lunch with company,110.0,Expense,Food,Unknown
+2021-12-17,Gave to gowdham,50.0,Expense,Other,Unknown
+2021-12-16,Egg,30.0,Expense,Food,Unknown
+2021-12-16,Panipoori,20.0,Expense,Food,Unknown
+2021-12-16,Lunch,30.0,Expense,Food,Unknown
+2021-12-16,Milk with bharath,110.0,Expense,Food,Unknown
+2021-12-14,Lunch,40.0,Expense,Food,Unknown
+2021-12-14,Snacks,75.0,Expense,Food,Unknown
+2021-12-14,Panipoori,80.0,Expense,Food,Unknown
+2021-12-14,Snacks,74.0,Expense,Food,Unknown
+2021-12-14,Milk with bharath,65.0,Expense,Food,Unknown
+2021-12-12,Milk with bharath,25.0,Expense,Food,Unknown
+2021-12-11,From dad,1000.0,Income,Allowance,Unknown
+2021-12-11,From stu,240.0,Income,Other,Unknown
+2021-12-10,Shopping,241.0,Expense,Food,Unknown
+2021-12-10,Momos,195.0,Expense,Food,Unknown
+2021-12-09,Snack with bharath,40.0,Expense,Food,Unknown
+2021-12-09,Lunch with company,280.0,Expense,Food,Unknown
+2021-12-09,Milk with bharath,25.0,Expense,Food,Unknown
+2021-12-09,Breakfast with stu,110.0,Expense,Food,Unknown
+2021-12-08,Lunch with stu,100.0,Expense,Food,Unknown
+2021-12-08,5 star,1120.72,Expense,Food,Unknown
+2021-12-08,Milk,10.0,Expense,Food,Unknown
+2021-12-07,Milk with bharath,25.0,Expense,Food,Unknown
+2021-12-07,Horlicks,15.0,Expense,Food,Unknown
+2021-12-06,Milk with bharath,25.0,Expense,Food,Unknown
+2021-12-06,Shoe,500.0,Expense,Apparel,Unknown
+2021-12-06,Cap,140.0,Expense,Apparel,Unknown
+2021-12-06,Lunch with stu,150.0,Expense,Food,Unknown
+2021-12-05,Milk with bharath,25.0,Expense,Food,Unknown
+2021-12-05,Full hand and a hoodie,1800.0,Expense,Apparel,Unknown
+2021-12-05,Rent,4800.0,Expense,Household,Unknown
+2021-12-05,From dad,8000.0,Income,Allowance,Unknown
+2021-12-04,Dinner,324.0,Expense,Food,Unknown
+2021-12-04,Snack,65.0,Expense,Food,Unknown
+2021-12-04,For company,30.0,Expense,Other,Unknown
+2021-12-04,Breakfast,200.0,Expense,Food,Unknown
+2021-12-03,Milk with bharath,25.0,Expense,Food,Unknown
+2021-12-03,Belt,130.0,Expense,Apparel,Unknown
+2021-12-03,Mask,20.0,Expense,Apparel,Unknown
+2021-12-03,Snack,40.0,Expense,Food,Unknown
+2021-12-03,From dad,1000.0,Income,Allowance,Unknown
+2021-12-02,Ice cream,504.0,Expense,Food,Unknown
+2021-12-02,Vadapaav,75.0,Expense,Food,Unknown
+2021-12-01,Showergel,196.0,Expense,Beauty,Unknown
+2021-12-01,Lunch with company,160.0,Expense,Food,Unknown
+2021-11-30,Bharath birthday,115.0,Expense,Gift,Unknown
+2021-11-30,Lunch with company,128.0,Expense,Food,Unknown
+2021-11-30,Breakfast,70.0,Expense,Food,Unknown
+2021-11-29,Lunch with company,40.0,Expense,Food,Unknown
+2021-11-29,Dinner,50.0,Expense,Food,Unknown
+2021-11-29,Panipoori,40.0,Expense,Food,Unknown
+2021-11-29,Breakfast,40.0,Expense,Food,Unknown
+2021-11-28,Snack,94.0,Expense,Food,Unknown
+2021-11-28,Zomato,269.4,Expense,Food,Unknown
+2021-11-27,Dinner with gowdham,120.0,Expense,Food,Unknown
+2021-11-27,Dinner with gowdham,130.0,Expense,Food,Unknown
+2021-11-27,Rapido,35.0,Expense,Transportation,Unknown
+2021-11-27,Lunch with company,75.0,Expense,Food,Unknown
+2021-11-27,From dad,2000.0,Income,Allowance,Unknown
+2021-11-27,Breakfast,30.0,Expense,Food,Unknown
+2021-11-26,Beer,150.0,Expense,Food,Unknown
+2021-11-26,Snack,102.0,Expense,Food,Unknown
+2021-11-26,Panipoori,40.0,Expense,Food,Unknown
+2021-11-26,Cashback,3.0,Income,Petty cash,Unknown
+2021-11-26,Lunch with company,150.0,Expense,Food,Unknown
+2021-11-26,Breakfast,60.0,Expense,Food,Unknown
+2021-11-25,Lunch with company,145.0,Expense,Food,Unknown
+2021-11-25,Rapido,58.0,Expense,Transportation,Unknown
+2021-11-25,Dinner,95.0,Expense,Food,Unknown
+2021-11-24,Snack,15.0,Expense,Food,Unknown
+2021-11-24,Dinner,70.0,Expense,Food,Unknown
+2021-11-24,Panipoori,20.0,Expense,Food,Unknown
+2021-11-24,Rapido,58.0,Expense,Transportation,Unknown
+2021-11-23,Rapido,50.0,Expense,Transportation,Unknown
+2021-11-23,Dinner,179.0,Expense,Food,Unknown
+2021-11-22,Dinner,90.0,Expense,Food,Unknown
+2021-11-22,Lunch with company,97.0,Expense,Food,Unknown
+2021-11-21,Rapido,130.0,Expense,Transportation,Unknown
+2021-11-21,Lunch,875.0,Expense,Food,Unknown
+2021-11-21,Got from gobi,2000.0,Income,Other,Unknown
