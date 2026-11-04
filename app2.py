@@ -7,7 +7,9 @@ from modules.anomaly_detector import detect_anomalies
 from modules.anomaly_detector import explain_anomalies
 from modules.forecasting import forecast_finances
 from modules.financial_simulator import simulate_scenario
-
+from modules.financial_resilience import analyze_financial_resilience
+from modules.decision_engine import compare_financial_decisions
+from modules.financial_health import calculate_financial_health
 # ==========================================
 # PAGE CONFIGURATION
 # ==========================================
@@ -328,7 +330,10 @@ def dashboard_page():
         "Spend Intelligence",
         "Anomaly Detection",
         "Financial Forecast",
-        "What-If Simulator"
+        "What-If Simulator",
+        "Financial Resilience Lab",
+        "Financial Decision Lab",
+        "Financial Health Score"
     ]
 
     selected = st.sidebar.radio(
@@ -336,7 +341,6 @@ def dashboard_page():
         menu,
         label_visibility="collapsed"
     )
-
     st.sidebar.markdown("---")
 
     st.sidebar.write("👤 " + st.session_state.user_email)
@@ -915,6 +919,490 @@ def dashboard_page():
             "Simulation results are estimates based on average monthly "
             "historical transactions. They are not guaranteed outcomes."
         )
+    
+    
+
+    elif selected == "Financial Resilience Lab":
+
+        st.title("Financial Shock & Resilience Lab")
+
+        st.write(
+            "Test how unexpected financial events could affect "
+            "your financial stability."
+        )
+
+        df = get_sample_data()
+
+        # Get average monthly income and expenses
+        baseline = simulate_scenario(df)
+
+        monthly_income = baseline["current_income"]
+        monthly_expenses = baseline["current_expenses"]
+
+        st.subheader("Your Financial Baseline")
+
+        col1, col2 = st.columns(2)
+
+        col1.metric(
+            "Average Monthly Income",
+            f"₹{monthly_income:,.0f}"
+        )
+
+        col2.metric(
+            "Average Monthly Expenses",
+            f"₹{monthly_expenses:,.0f}"
+        )
+
+        st.divider()
+
+        st.subheader("Simulate a Financial Shock")
+
+        income_reduction = st.slider(
+            "Income Reduction (%)",
+            min_value=0,
+            max_value=100,
+            value=30,
+            step=5
+        )
+
+        emergency_expense = st.number_input(
+            "Unexpected Emergency Expense (₹)",
+            min_value=0,
+            max_value=500000,
+            value=10000,
+            step=1000
+        )
+
+        emergency_reserve = st.number_input(
+            "Available Emergency Reserve (₹)",
+            min_value=0,
+            max_value=1000000,
+            value=40000,
+            step=1000
+        )
+
+        disruption_months = st.slider(
+            "Duration of Financial Disruption (Months)",
+            min_value=1,
+            max_value=12,
+            value=2
+        )
+
+        # Run the financial resilience engine
+        results = analyze_financial_resilience(
+            monthly_income=monthly_income,
+            monthly_expenses=monthly_expenses,
+            emergency_reserve=emergency_reserve,
+            income_reduction_pct=income_reduction,
+            emergency_expense=emergency_expense,
+            disruption_months=disruption_months
+        )
+
+        st.divider()
+
+        st.subheader("Financial Shock Analysis")
+
+        col1, col2, col3 = st.columns(3)
+
+        col1.metric(
+            "Income After Shock",
+            f"₹{results['reduced_income']:,.0f}"
+        )
+
+        col2.metric(
+            "Monthly Balance",
+            f"₹{results['monthly_balance']:,.0f}"
+        )
+
+        col3.metric(
+            "Remaining Emergency Reserve",
+            f"₹{results['remaining_reserve']:,.0f}"
+        )
+
+        st.subheader("Emergency Reserve Projection")
+        
+
+        reserve_timeline = []
+
+        current_reserve = (
+            emergency_reserve - emergency_expense
+        )
+
+        for month in range(disruption_months + 1):
+
+            reserve_timeline.append({
+            "Month": f"Month {month}",
+            "Projected Reserve": current_reserve
+            })
+
+            current_reserve += results["monthly_balance"]
+
+        reserve_df = pd.DataFrame(reserve_timeline)
+
+        fig = px.line(
+            reserve_df,
+            x="Month",
+            y="Projected Reserve",
+            markers=True,
+            title="How Your Emergency Reserve Changes Over Time"
+        )   
+
+        fig.add_hline(
+            y=0,
+            line_dash="dash",
+            annotation_text="Zero Reserve"
+        )
+
+        st.plotly_chart(fig, use_container_width=True)
+        st.subheader("Financial Resilience Assessment")
+
+        col1, col2 = st.columns(2)
+
+        col1.metric(
+            "Projected Reserve",
+            f"₹{results['projected_reserve']:,.0f}"
+        )
+
+        col2.metric(
+            "Financial Runway",
+            f"{results['financial_runway']:.2f} months"
+        )
+
+        if results["resilience_status"] == "Strong":
+            st.success("Strong Financial Resilience")
+
+        elif results["resilience_status"] == "Moderate":
+            st.warning("Moderate Financial Resilience")
+
+        else:
+            st.error("Financially At Risk")
+
+        st.write(
+            f"Additional reserve required to cover the simulated "
+            f"deficit: ₹{results['reserve_shortfall']:,.2f}"
+        )
+
+        st.subheader("FinSim's Financial Insight")
+
+        if results["monthly_balance"] < 0:
+            st.warning(
+                "Your income after the shock is lower than your "
+                "monthly expenses. Your emergency reserve may be "
+                "needed to cover the monthly deficit."
+            )
+        else:
+            st.success(
+                "Your reduced income still covers your monthly "
+                "expenses under this scenario."
+            )
+
+        if results["reserve_shortfall"] > 0:
+            st.error(
+                "Your emergency reserve is insufficient to cover "
+                "the projected deficit over this disruption period."
+            )
+        else:
+            st.info(
+                "Your emergency reserve covers the projected "
+                "deficit in this scenario."
+            )
+
+        st.caption(
+            "This is a hypothetical stress test based on historical "
+            "average monthly transactions and user-provided assumptions. "
+            "It is not a guarantee of future financial outcomes."
+        )
+    
+    elif selected == "Financial Decision Lab":
+
+        st.title("Financial Decision Lab")
+
+        st.write(
+            "Compare different financial decisions and discover "
+            "which one could improve your financial position."
+        )
+
+        df = get_sample_data()
+
+        baseline = simulate_scenario(df)
+
+        monthly_income = baseline["current_income"]
+        monthly_expenses = baseline["current_expenses"]
+
+        st.subheader("Your Current Financial Position")
+
+        col1, col2 = st.columns(2)
+
+        col1.metric(
+            "Monthly Income",
+            f"₹{monthly_income:,.0f}"
+        )
+
+        col2.metric(
+            "Monthly Expenses",
+            f"₹{monthly_expenses:,.0f}"
+        )
+
+        st.divider()
+
+        st.subheader("Design Your Financial Decisions")
+
+        expense_reduction = st.slider(
+            "Decision A: Reduce Monthly Expenses (₹)",
+            min_value=0,
+            max_value=10000,
+            value=3000,
+            step=500
+        )
+
+        additional_income = st.slider(
+            "Decision B: Increase Monthly Income (₹)",
+            min_value=0,
+            max_value=20000,
+            value=5000,
+            step=500
+        )
+
+        duration = st.slider(
+            "Projection Period (Months)",
+            min_value=1,
+            max_value=12,
+            value=6
+        )
+
+        results = compare_financial_decisions(
+            monthly_income=monthly_income,
+            monthly_expenses=monthly_expenses,
+            expense_reduction=expense_reduction,
+            additional_income=additional_income,
+            duration_months=duration
+        )
+
+        st.divider()
+
+        st.subheader("Decision Comparison")
+
+        col1, col2 = st.columns(2)
+
+        col1.metric(
+            "Decision A — Expense Reduction",
+            f"₹{results['decision_a_projection']:,.0f}",
+            delta=f"₹{results['decision_a_improvement']:,.0f}"
+        )
+
+        col2.metric(
+            "Decision B — Additional Income",
+            f"₹{results['decision_b_projection']:,.0f}",
+            delta=f"₹{results['decision_b_improvement']:,.0f}"
+        )
+
+        st.subheader("Projected Financial Outcomes")
+
+        comparison_df = pd.DataFrame({
+            "Decision": [
+                "Current Situation",
+                "Decision A: Reduce Expenses",
+                "Decision B: Increase Income"
+            ],
+            "Projected Savings": [
+                results["baseline_projection"],
+                results["decision_a_projection"],
+                results["decision_b_projection"]
+            ]
+        })
+
+        fig = px.bar(
+            comparison_df,
+            x="Decision",
+            y="Projected Savings",
+            title=f"Projected Savings Over {duration} Months",
+            text_auto=".2s"
+        )
+
+        fig.update_layout(
+            yaxis_title="Projected Savings (₹)",
+            xaxis_title="Financial Strategy"
+        )
+
+        st.plotly_chart(fig, use_container_width=True)
+        st.subheader("FinSim's Recommendation")
+
+        st.subheader("FinSim's Intelligent Recommendation")
+
+        difference = abs(
+            results["decision_a_projection"]
+            - results["decision_b_projection"]
+        )
+
+        if results["decision_a_projection"] > results["decision_b_projection"]:
+
+            st.success("Recommended Strategy: Reduce Expenses")
+
+            st.write(
+                f"Reducing expenses could generate "
+                f"₹{difference:,.0f} more savings than increasing income "
+                f"over {duration} months."
+            )
+
+            st.info(
+                "Why this decision? Your selected expense reduction "
+                "produces a greater improvement in projected savings "
+                "than your selected additional income."
+            )
+
+        elif results["decision_b_projection"] > results["decision_a_projection"]:
+
+            st.success("Recommended Strategy: Increase Income")
+
+            st.write(
+                f"Increasing income could generate "
+                f"₹{difference:,.0f} more savings than reducing expenses "
+                f"over {duration} months."
+            )
+
+            st.info(
+                "Why this decision? Your selected additional income "
+                "produces a greater improvement in projected savings "
+                "than your selected expense reduction."
+            )
+
+        else:
+
+            st.info(
+                "Both strategies produce the same projected savings. "
+                "You can choose either strategy based on practicality."
+            )
+
+        st.caption(
+            "These are hypothetical projections assuming the "
+            "selected monthly changes remain constant. "
+            "Actual financial outcomes may differ."
+        )
+    
+    elif selected == "Financial Health Score":
+
+        st.title("Financial Health Score")
+
+        st.write(
+            "Understand your financial position through "
+            "a transparent score based on savings, cash flow "
+            "and emergency preparedness."
+        )
+
+        df = get_sample_data()
+
+        baseline = simulate_scenario(df)
+
+        monthly_income = baseline["current_income"]
+        monthly_expenses = baseline["current_expenses"]
+
+        st.subheader("Your Financial Information")
+
+        col1, col2 = st.columns(2)
+
+        col1.metric(
+            "Average Monthly Income",
+            f"₹{monthly_income:,.0f}"
+        )
+
+        col2.metric(
+            "Average Monthly Expenses",
+            f"₹{monthly_expenses:,.0f}"
+        )
+
+        emergency_reserve = st.number_input(
+            "Enter Your Emergency Reserve (₹)",
+            min_value=0,
+            max_value=1000000,
+            value=40000,
+            step=1000
+        )
+
+        results = calculate_financial_health(
+            monthly_income=monthly_income,
+            monthly_expenses=monthly_expenses,
+            emergency_reserve=emergency_reserve
+        )
+
+        st.divider()
+
+        st.subheader("Your Financial Health Report")
+
+        st.metric(
+            "Financial Health Score",
+            f"{results['total_score']} / 100"
+        )
+
+        st.progress(
+            results["total_score"] / 100
+        )
+
+        st.subheader(
+            f"Financial Status: {results['health_status']}"
+        )
+
+        col1, col2 = st.columns(2)
+
+        col1.metric(
+            "Monthly Savings",
+            f"₹{results['monthly_savings']:,.0f}"
+        )
+
+        col2.metric(
+            "Savings Rate",
+            f"{results['savings_rate']:.2f}%"
+        )
+
+        col1, col2 = st.columns(2)
+
+        col1.metric(
+            "Emergency Reserve Coverage",
+            f"{results['reserve_months']:.2f} months"
+        )
+
+        col2.metric(
+            "Reserve Score",
+            f"{results['reserve_score']:.1f} / 30"
+        )
+
+        st.subheader("Score Breakdown")
+
+        score_df = pd.DataFrame({
+            "Financial Indicator": [
+                "Savings Performance",
+                "Monthly Cash Flow",
+                "Emergency Reserve"
+            ],
+            "Points Earned": [
+                results["savings_score"],
+                results["cash_flow_score"],
+                results["reserve_score"]
+            ],
+            "Maximum Points": [40, 30, 30]
+        })
+
+        fig = px.bar(
+            score_df,
+            x="Financial Indicator",
+            y="Points Earned",
+            title="Financial Health Score Breakdown",
+            text_auto=".2s"
+        )
+
+        st.plotly_chart(
+            fig,
+            use_container_width=True
+        )
+
+        st.caption(
+            "This is an illustrative scoring model based on "
+            "historical average transactions and your entered "
+            "emergency reserve. It is not a validated credit "
+            "score or professional financial assessment."
+        )
+
+
+
 
 # ==========================================
 # PAGE ROUTING
